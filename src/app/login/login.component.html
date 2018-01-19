@@ -1,0 +1,43 @@
+<div class="">
+  <div class="login-box">
+    <div class="login-header">
+      <div class="row">
+        <div class="col-md-11 col-md-offset-1">
+          Login Form
+        </div>
+      </div>
+    </div>
+    <div class="login-form">
+      <form *ngIf="this.loginForm" [formGroup]="loginForm" novalidate>
+        <div class="row custom-row">
+          <div class="col-md-12 col-lg-10 offset-lg-1">
+            <div class="ui-inputgroup custom-inputs">
+              <input type="text" pInputText placeholder="Username">
+              <span class="ui-inputgroup-addon">
+                <i class="fa fa-user"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row custom-row">
+          <div class="col-md-12 col-lg-10 offset-lg-1">
+            <div class="ui-inputgroup custom-inputs">
+              <input type="password" pInputText placeholder="Password">
+              <span class="ui-inputgroup-addon">
+                <i class="fa fa-lock"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row custom-row btn-row" >
+        <div class="col-md-4 col-lg-3 offset-lg-1">
+          <button pButton type="button" (click)="login()" class="custom-btn" label="Sign In"></button>
+        </div>
+        <div class="col-md-6 col-lg-5 offset-lg-1">
+         <span (click)="lostPass()" style="cursor:pointer">Lost your password?</span> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

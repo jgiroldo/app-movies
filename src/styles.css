@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  min-width: 1024px;
+  min-height: 768px;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  overflow-y: auto;
+  background: #4d0099;
+  background: radial-gradient(#6E4A71 1%, #310F32 98%);
+}
+
