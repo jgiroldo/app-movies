@@ -11,6 +11,9 @@ export class LoginService {
     this.router.navigate(['/movies']);
   }
 
-
+  logout() {
+    this.isLogged = false;
+    this.router.navigate(['/login']);
+  }
 
 }

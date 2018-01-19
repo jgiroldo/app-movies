@@ -1,3 +1,45 @@
-<p>
-  movies works!
-</p>
+<div class="container-fluid movie-page">
+  <div class="filter-box">
+    <form *ngIf="this.filterForm" [formGroup]="filterForm" novalidate>
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="ui-inputgroup custom-inputs">
+            <input type="text" formControlName="title" [(ngModel)]="filterObj.s" pInputText placeholder="Title *">
+          </div>
+          <div class="ui-message ui-messages-error ui-corner-all custom-error-msg" *ngIf="!filterForm.controls['title'].valid&&filterForm.controls['title'].dirty">
+              <i class="fa fa-close"></i>
+              Username is required
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="ui-inputgroup custom-inputs">
+            <input type="text" pInputText formControlName="year" [(ngModel)]="filterObj.y" placeholder="Year">
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <button pButton type="button" (click)="filter()" class="custom-btn" label="Filter" [disabled]="!filterForm.valid"></button>
+        </div>
+        <div class="col-sm-6 col-md-1">
+          <button pButton type="button" (click)="logout()" class="custom-btn ui-button-secondary" icon="fa fa-sign-out" iconPos="right" label="Sair"></button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="grid-box">
+    <p-dataGrid [value]="moviesList" [paginator]="true" [rows]="8" [lazy]="true" (onLazyLoad)="loadData($event)" totalRecords="100">
+      <p-header>
+        List of Films
+      </p-header>
+      <ng-template let-movie pTemplate="item">
+        <div style="padding:3px; min-height:10%" class="col-sm-12 col-md-3">
+          <p-panel [header]="movie.Title" [style]="{'text-align':'center'}">
+            <img src="{{movie.Poster}}" height="110">
+            <div class="car-detail">{{movie.Year}}</div>
+            <i class="fa fa-search" (click)="selectMovie(movie)" style="cursor:pointer"></i>
+          </p-panel>
+        </div>
+      </ng-template>
+    </p-dataGrid>
+  </div>
+</div>

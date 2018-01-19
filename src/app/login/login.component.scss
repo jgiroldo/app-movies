@@ -24,41 +24,8 @@
   margin-top: 40px;
 }
 
-.custom-inputs {
-  input {
-    background: #F0EEF1;
-    height: 50px;
-    border-color: #d6d6d6;
-    width: 100%
-  }
-}
 
 .btn-row {
   line-height: 50px;
 }
 
-.custom-btn {
-  background: #594159;
-  border: #594159;
-  height: 100%;
-  width: 80%;
-  &:hover {
-    background: #754E7A !important;
-    border: #754E7A !important;
-  }
-  &:active {
-    background: #754E7A !important;
-    border: #754E7A !important;
-  }
-}
-
-.ui-widget.ui-button:enabled:hover {
-  background: #754E7A !important;
-  border: #754E7A !important;
-}
-
-.ui-inputgroup .ui-inputgroup-addon {
-  background: #F0EEF1;
-  font-size: x-large;
-  border-left-color: #F0EEF1;
-}

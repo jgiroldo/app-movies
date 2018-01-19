@@ -1,0 +1,70 @@
+html,
+body {
+  min-width: 1024px;
+  min-height: 768px;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  overflow-y: auto;
+  background: #4d0099;
+  background: radial-gradient(#6E4A71 1%, #310F32 98%);
+}
+
+.custom-inputs {
+  input {
+    background: #F0EEF1;
+    height: 50px;
+    border-color: #d6d6d6;
+    width: 100%
+  }
+}
+
+.ui-widget.ui-button,
+.ui-button {
+  &.ui-button-secondary.ui-state-default {
+    background: #a088a0;
+    border: #a088a0;
+    &:hover {
+      color: #fff;
+    }
+  }
+  background: #594159;
+  border: #594159;
+  height: 100%;
+  width: 80%;
+  &:hover {
+    background: #754E7A !important;
+    border: #754E7A !important;
+  }
+  &:active {
+    background: #754E7A;
+    border: #754E7A;
+  }
+  &:focus {
+    background: #754E7A;
+    border: #754E7A;
+  }
+}
+
+.ui-inputgroup .ui-inputgroup-addon {
+  background: #F0EEF1;
+  font-size: x-large;
+  border-left-color: #F0EEF1;
+}
+
+.ui-messages-error {
+  position: absolute;
+  background-color: #ffcbc800;
+  border-color: #ffcbc800;
+}
+
+.ui-paginator .ui-paginator-page.ui-state-active {
+  background: #754E7A;
+  border: #754E7A;
+}
+
+.custom-error-msg{
+  margin-top: -8px;
+}
