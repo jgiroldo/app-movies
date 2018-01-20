@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginSvc.login();
+    this.loginSvc.login(this.loginVm);
   }
 
   lostPass() {
-    console.log('lost')
+    console.log('lost');
 
   }
 

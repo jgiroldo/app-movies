@@ -24,8 +24,8 @@ export class MoviesComponent implements OnInit {
   ngOnInit() {
     this.filterObj = {
       s: 'american', //tiltle
-      y: undefined,
-      page: 1 //year,
+      y: undefined, //year
+      page: 1
     };
     this.buildForm();
   }

@@ -3,16 +3,22 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class LoginService {
-  isLogged = false;
   constructor(private router: Router) { }
 
-  login() {
-    this.isLogged = true;
+  login(loginObj: any) {
+    const authObj = {
+      'username': loginObj.username,
+      'isLogged': true,
+    };
+
+    const objStr = JSON.stringify(authObj);
+    localStorage.removeItem('authInfo');
+    localStorage.setItem('authInfo', objStr);
     this.router.navigate(['/movies']);
   }
 
   logout() {
-    this.isLogged = false;
+    localStorage.removeItem('authInfo');
     this.router.navigate(['/login']);
   }
 

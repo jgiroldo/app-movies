@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/movies', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuard] },
   { path: 'movies', component: MoviesComponent, canActivate: [LoginGuard] }
+  // { path: '**', redirectTo: '/movies', }
 ];
 
 @NgModule({

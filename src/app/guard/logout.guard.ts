@@ -1,16 +1,27 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { LoginService } from '../login/login.service';
 
 @Injectable()
 export class LogoutGuard implements CanActivate {
 
-  constructor(private loginSvc: LoginService) { }
+  constructor(private loginSvc: LoginService, private router: Router) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.loginSvc.isLogged ? false : true;
+    const authStr = localStorage.getItem('authInfo');
+    let authObj = null;
+    if (authStr) {
+      authObj = JSON.parse(authStr);
+    }
+    if (authObj && authObj.isLogged) {
+      this.router.navigate(['/movies']);
+      return false;
+    } else {
+      return true;
+    }
+
   }
 }
