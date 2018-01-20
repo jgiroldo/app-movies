@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   email: String;
   displayDialog = false;
   recoverMsg = '';
-  constructor(private formBuilder: FormBuilder, private loginSvc: LoginService) { }
+  constructor(private formBuilder: FormBuilder, public loginSvc: LoginService) { }
 
   ngOnInit() {
     this.buildForm();
