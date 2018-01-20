@@ -22,4 +22,12 @@ export class LoginService {
     this.router.navigate(['/login']);
   }
 
+  getUserInfo() {
+    const authStr = localStorage.getItem('authInfo');
+    let authObj = null;
+    if (authStr) {
+      authObj = JSON.parse(authStr);
+    }
+    return authObj;
+  }
 }

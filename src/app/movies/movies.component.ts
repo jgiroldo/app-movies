@@ -18,6 +18,9 @@ export class MoviesComponent implements OnInit {
   filterObj: any;
   responseObj = new ResponseModel({});
   filterForm: FormGroup;
+  displayDialog = false;
+  movieDetail: MovieModel;
+  userInfo:any;
 
   constructor(private formBuilder: FormBuilder, private movieSvc: MoviesService, private loginSvc: LoginService) { }
 
@@ -27,6 +30,7 @@ export class MoviesComponent implements OnInit {
       y: undefined, //year
       page: 1
     };
+    this.userInfo = this.loginSvc.getUserInfo();
     this.buildForm();
   }
 
@@ -48,12 +52,26 @@ export class MoviesComponent implements OnInit {
         this.responseObj = new ResponseModel(data);
         this.moviesList = this.responseObj.Search;
       }, err => {
-
+        console.log(err);
       });
   }
 
   logout() {
     this.loginSvc.logout();
+  }
+
+  viewDetails(movieId: any) {
+    const param = {
+      i: movieId, //imdb ID
+    };
+
+    this.movieSvc.getMovies(param).subscribe(
+      data => {
+        this.movieDetail = new MovieModel(data);
+        this.displayDialog = true;
+      }, err => {
+
+      });
   }
 
 

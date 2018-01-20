@@ -10,6 +10,10 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
   loginVm: LoginModel = new LoginModel({});
   loginForm: FormGroup;
+  emailForm: FormGroup;
+  email: String;
+  displayDialog = false;
+  recoverMsg = '';
   constructor(private formBuilder: FormBuilder, private loginSvc: LoginService) { }
 
   ngOnInit() {
@@ -21,6 +25,9 @@ export class LoginComponent implements OnInit {
       'username': [this.loginVm.username, Validators.required],
       'password': [this.loginVm.password, Validators.required]
     });
+    this.emailForm = this.formBuilder.group({
+      'email': [this.email, Validators.compose([Validators.required, Validators.email])]
+    });
   }
 
   login() {
@@ -28,8 +35,17 @@ export class LoginComponent implements OnInit {
   }
 
   lostPass() {
-    console.log('lost');
+    this.displayDialog = true;
+  }
 
+  recoverPassword() {
+    this.recoverMsg = 'An email was sent for password recovery.';
+    this.closeDialog();
+  }
+
+  closeDialog() {
+    this.displayDialog = false;
+    this.email = undefined;
   }
 
 }

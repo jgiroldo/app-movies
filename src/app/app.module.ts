@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MoviesComponent } from './movies/movies.component';
+import { PageNotFoundComponent } from './not-found.component';
 import { AppRoutingModule } from './app.routing.module';
 import { LoginService } from './login/login.service';
 import { MoviesService } from './movies/movies.service';
@@ -18,7 +19,6 @@ import { ButtonModule } from 'primeng/button';
 import { DataGridModule } from 'primeng/datagrid';
 import { DataTableModule } from 'primeng/datatable';
 import { DialogModule } from 'primeng/dialog';
-import { PageNotFoundComponent } from './not-found.component';
 
 @NgModule({
   declarations: [

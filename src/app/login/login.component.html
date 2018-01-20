@@ -46,6 +46,41 @@
           <span (click)="lostPass()" style="cursor:pointer">Lost your password?</span>
         </div>
       </div>
+      <div class="row">
+        <div class="col-7 offset-5 ">
+          <span *ngIf="recoverMsg">{{recoverMsg}}</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+<p-dialog [(visible)]="displayDialog" modal="modal" [width]="800" [responsive]="true" [resizable]="false" (onHide)="closeDialog()">
+  <p-header class="detail-header">
+    Password Recovery
+  </p-header>
+  <form *ngIf="this.emailForm" [formGroup]="emailForm" novalidate>
+    <div class="row" style="padding-bottom:35px;">
+      <div class="col-12">
+        <div class="ui-inputgroup custom-inputs">
+          <input type="text" [(ngModel)]="email" formControlName="email" pInputText placeholder="Enter Your Email">
+          <span class="ui-inputgroup-addon">
+            <i class="fa fa-envelope"></i>
+          </span>
+        </div>
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!emailForm.controls['email'].valid&&emailForm.controls['email'].dirty">
+          <i class="fa fa-close"></i>
+          Password is required
+        </div>
+      </div>
+    </div>
+  </form>
+  <p-footer>
+    <div class="row">
+      <div class="col-2 offset-10">
+        <button pButton type="button" (click)="recoverPassword()" [disabled]="!emailForm.valid" class="custom-btn" label="Send"></button>
+      </div>
+    </div>
+  </p-footer>
+</p-dialog>

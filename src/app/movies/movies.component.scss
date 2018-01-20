@@ -1,13 +1,47 @@
-.movie-page{
+.movie-page {
   margin-top: 1%;
 }
 
-.grid-box{
-margin-top: 2%;
+.grid-box {
+  margin-top: 2%;
 }
-.filter-box{
-  height: 100px;
-  padding: 0 15px 0 15px;
+
+.filter-box {
+  padding: 20px 15px 20px 15px;
   background: #F0EEF1;
   padding-top: 25px;
+}
+
+.detail-box {
+  font-size: larger;
+  font-weight: bold;
+  color: #594159;
+}
+
+.detail-header {
+  color: #594159;
+}
+
+.movie-title {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.movie-descriptions {
+  div {
+    margin-top: 8px;
+    a {
+      color: #594159;
+    }
+  }
+}
+
+.custom-close {
+  div {
+    div {
+      a {
+        margin-top: -50px !important;
+      }
+    }
+  }
 }

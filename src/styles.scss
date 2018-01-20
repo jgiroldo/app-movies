@@ -65,6 +65,20 @@ body {
   border: #754E7A;
 }
 
-.custom-error-msg{
+.custom-error-msg {
   margin-top: -8px;
+}
+
+.ui-dialog {
+  &.custom-close {
+    .ui-dialog-titlebar-close {
+      margin-top: -50px;
+    }
+  }
+  .ui-dialog-titlebar-close {
+    font-size: x-large;
+    span {
+      color: #754E7A;
+    }
+  }
 }

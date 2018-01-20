@@ -2,25 +2,31 @@
   <div class="filter-box">
     <form *ngIf="this.filterForm" [formGroup]="filterForm" novalidate>
       <div class="row">
+        <div class="col-11 text-right">
+          Hi {{userInfo.username}}
+        </div>
+        <div class="col-sm-6 col-md-1">
+          <button pButton type="button" (click)="logout()" class="custom-btn ui-button-secondary" icon="fa fa-sign-out" iconPos="right"
+            label="Sair"></button>
+        </div>
+      </div>
+      <div class="row" style="margin-top:10px;">
         <div class="col-sm-12 col-md-4">
           <div class="ui-inputgroup custom-inputs">
             <input type="text" formControlName="title" [(ngModel)]="filterObj.s" pInputText placeholder="Title *">
           </div>
           <div class="ui-message ui-messages-error ui-corner-all custom-error-msg" *ngIf="!filterForm.controls['title'].valid&&filterForm.controls['title'].dirty">
-              <i class="fa fa-close"></i>
-              Username is required
-            </div>
+            <i class="fa fa-close"></i>
+            Username is required
+          </div>
         </div>
         <div class="col-sm-12 col-md-4">
           <div class="ui-inputgroup custom-inputs">
             <input type="text" pInputText formControlName="year" [(ngModel)]="filterObj.y" placeholder="Year">
           </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-          <button pButton type="button" (click)="filter()" class="custom-btn" label="Filter" [disabled]="!filterForm.valid"></button>
-        </div>
         <div class="col-sm-6 col-md-1">
-          <button pButton type="button" (click)="logout()" class="custom-btn ui-button-secondary" icon="fa fa-sign-out" iconPos="right" label="Sair"></button>
+          <button pButton type="button" (click)="filter()" class="custom-btn" label="Filter" [disabled]="!filterForm.valid"></button>
         </div>
       </div>
     </form>
@@ -36,10 +42,77 @@
           <p-panel [header]="movie.Title" [style]="{'text-align':'center'}">
             <img src="{{movie.Poster}}" height="110">
             <div class="car-detail">{{movie.Year}}</div>
-            <i class="fa fa-search" (click)="selectMovie(movie)" style="cursor:pointer"></i>
+            <i class="fa fa-search" (click)="viewDetails(movie.imdbID)" style="cursor:pointer"></i>
           </p-panel>
         </div>
       </ng-template>
     </p-dataGrid>
   </div>
+</div>
+
+<div *ngIf="movieDetail">
+  <p-dialog [(visible)]="displayDialog" modal="modal" [width]="1000" [responsive]="true" [resizable]="false" styleClass="custom-close">
+    <p-header class="detail-header">
+      <div class="row">
+        <div class="col-10 movie-title">
+          {{movieDetail.title}} ({{movieDetail.year}})
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-10">
+          {{movieDetail.runtime}} | {{movieDetail.genre}} |
+          <i class="fa fa-star" aria-hidden="true"></i> {{movieDetail.imdbRating}}
+        </div>
+      </div>
+    </p-header>
+    <div class="detail-box">
+      <div class="row">
+        <div class="col-4">
+          <img src="{{movieDetail.poster}}" height="450">
+        </div>
+        <div class="col-8 movie-descriptions">
+          <div class="row">
+            <div class="col-12">
+              {{movieDetail.plot}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              Director - {{movieDetail.director}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              Writer - {{movieDetail.writer}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              Actors - {{movieDetail.actors}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              Country - {{movieDetail.country}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              Awards - {{movieDetail.awards}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              Production - {{movieDetail.production}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <a href="{{movieDetail.website}}">{{movieDetail.website}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-dialog>
 </div>

@@ -11,11 +11,8 @@ export class LogoutGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const authStr = localStorage.getItem('authInfo');
-    let authObj = null;
-    if (authStr) {
-      authObj = JSON.parse(authStr);
-    }
+
+    const authObj = this.loginSvc.getUserInfo();
     if (authObj && authObj.isLogged) {
       this.router.navigate(['/movies']);
       return false;

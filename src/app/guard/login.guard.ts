@@ -11,11 +11,7 @@ export class LoginGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    const authStr = localStorage.getItem('authInfo');
-    let authObj = null;
-    if (authStr) {
-      authObj = JSON.parse(authStr);
-    }
+    const authObj = this.loginSvc.getUserInfo();
     if (authObj && authObj.isLogged) {
       return true;
     } else {
